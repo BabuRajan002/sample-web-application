@@ -3,14 +3,12 @@
 @Library('shared-library@master') _ //master or whatever branch
 
 pipeline{
-
-      agent {
-                docker {
-                image 'maven'
-                args '-v $HOME/.m2:/root/.m2'
-                }
-            }
-        
+     
+      agent any
+      tools { 
+        maven 'mymaven'
+        jdk 'myjava' 
+       }
         stages{
 
               stage('maven build'){
